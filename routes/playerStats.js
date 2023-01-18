@@ -14,7 +14,7 @@ router.get('/', async (req, res) =>  {
 })
 
 // Getting one
-router.get('/:id', (req, res) =>  {
+router.get('/:id', getPlayerStats, (req, res) =>  {
     res.send(req.params.id)
 })
 
@@ -55,5 +55,19 @@ router.patch('/:id', (req, res) =>  {
 router.delete('/:id', (req, res) =>  {
 
 })
+
+async function getPlayerStats(req, res, next) {
+    let playerStats
+    try {
+        playerStats = await PlayerStats.findById(req.params.id)
+        if (playerStats == null) {
+            return res.status(400).json({ message: "Cannot find player stats"})
+        } 
+    } catch(err) {
+        return res.status(500).json({ message: err.message })
+    }
+    res.playerStats = playerStats
+    next()
+}
 
 module.exports = router
