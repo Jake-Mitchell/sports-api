@@ -22,4 +22,9 @@ Content-Type: application/json
     "homeruns": 1
 }
 
+###
+
+DELETE http://localhost:3000/playerStats/63c86e4183927f2a4a7dffdc
+
+
 

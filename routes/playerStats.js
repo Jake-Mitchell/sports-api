@@ -52,8 +52,13 @@ router.patch('/:id', (req, res) =>  {
 })
 
 // Deleting one
-router.delete('/:id', (req, res) =>  {
-
+router.delete('/:id', getPlayerStats, async (req, res) =>  {
+    try {
+        await res.playerStats.remove()
+        res.json({ message: "Deleted player stats"})
+    } catch (err){
+        res.status(500).json({ message: err.message})
+    }
 })
 
 async function getPlayerStats(req, res, next) {
