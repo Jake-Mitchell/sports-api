@@ -1,0 +1,25 @@
+GET http://localhost:3000/playerStats
+
+###
+
+GET http://localhost:3000/localhost:3000/playerStats/1
+
+###
+
+POST http://localhost:3000/playerStats
+Content-Type: application/json
+
+{
+    "name": "David Beckham",
+    "number": 44,
+    "atBats": 6,
+    "battingAverage": 0.5,
+    "runs": 4,
+    "plateAppearances": 9,
+    "runsBattedIn": 3,
+    "doubles": 2,           
+    "triples": 1,
+    "homeruns": 1
+}
+
+
