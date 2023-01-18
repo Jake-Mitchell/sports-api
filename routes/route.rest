@@ -2,7 +2,7 @@ GET http://localhost:3000/playerStats
 
 ###
 
-GET http://localhost:3000/localhost:3000/playerStats/1
+GET http://localhost:3000/playerStats/63c8726893a231a5b8c52a55
 
 ###
 

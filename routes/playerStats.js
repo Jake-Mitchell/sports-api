@@ -15,7 +15,7 @@ router.get('/', async (req, res) =>  {
 
 // Getting one
 router.get('/:id', getPlayerStats, (req, res) =>  {
-    res.send(req.params.id)
+    res.send(res.playerStats)
 })
 
 // Creating one
