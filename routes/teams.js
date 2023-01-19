@@ -6,7 +6,6 @@ const {
     deleteTeam,
     getAllTeams,
     getTeam,
-    seedDatabaseWithTeams,
     updateTeam,
 } = require('../controllers/teams')
 
@@ -24,8 +23,5 @@ router.patch('/:id', checkForInvalidTeamFields, updateTeam)
 
 // Delete one
 router.delete('/:id', deleteTeam)
-
-// Seed data
-router.post('/seed', seedDatabaseWithTeams)
 
 module.exports = router

@@ -35,28 +35,35 @@ const createPlayerStats = async (req, res) => {
     }
 }
 
-// create this after creating Teams and Players mongoDB collections and mongoose schemas
-const seedDatabaseWithPlayerStats = async (
-    req,
-    res,
-    next,
-) => {
-    console.log("teams", req.seedTeams)
-    console.log("players", req.seedPlayers)
-    console.log("games", req.seedGames)
+
+const seedDatabaseWithPlayerStats = async (req, res, next) => {
+    const seedPlayers = req.seedPlayers
+    const seedGames = req.seedGames
     try {
-        // create 120! player game stats, 10 per the 12 players!
-        // await PlayerStats.insertMany([
-        //     {},
-        //     {},
-        //     {},
-        //     {},
-        //     {},
-        //     {},
-        //     {},
-        //     {},
-        // ])
-    
+        const playersStatsData = await seedPlayers.map(player => {
+            let total = [];
+            seedGames.forEach(game => {
+                if(game.winningTeamId == player.teamId|| game.losingTeamId === player.teamId) {
+                    total.push({
+                        playerId: player._id,
+                        gameId: game._id,
+                        atBats: Math.floor(Math.random() * 6),
+                        battingAverage: Math.random(),
+                        runs: Math.floor(Math.random() * 5),
+                        plateAppearances: Math.floor(Math.random() * 7),
+                        runsBattedIn: Math.floor(Math.random() * 6),
+                        hits: Math.floor(Math.random() * 8),
+                        doubles: Math.round(Math.random()),
+                        triples: Math.round(Math.random() - 0.25),
+                        homeruns: Math.round(Math.random() - 0.35 ),
+                    })
+                }
+            })
+            return total
+        })
+        const flattenedPlayerStatsData = [].concat(...playersStatsData)
+        const playerStatsResult = await PlayerStats.insertMany(flattenedPlayerStatsData)
+        res.status(201).json(playerStatsResult)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
@@ -92,7 +99,7 @@ const checkForInvalidFields = (req, _res, next) => {
     const validSchemaFields = Object.keys(PlayerStats.schema.obj)
     fieldsToUpdate.forEach(field => {
         if(!validSchemaFields.includes(field)) {
-            console.warn({ message: `Request body uses unsupported field: ${field}`}) // create obfuscated error codes instead of telling which field was invalid, else attackers can generate lists of field names and see which are valid or invalid!
+            console.warn({ message: `Request body uses unsupported field: ${field}`})
         }
     })
     next()

@@ -6,7 +6,6 @@ const {
     deletePlayerStats,
     getAllPlayerStats,
     getPlayerStats,
-    seedDatabaseWithPlayerStats,
     updatePlayerStats,
 } = require('../controllers/playerStats')
 
@@ -24,8 +23,5 @@ router.patch('/:id', checkForInvalidFields, updatePlayerStats)
 
 // Delete one
 router.delete('/:id', deletePlayerStats)
-
-// Seed data
-// router.post('/seed', seedDatabaseWithPlayerStats)
 
 module.exports = router

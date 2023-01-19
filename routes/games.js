@@ -23,7 +23,4 @@ router.delete('/:id', deleteGame)
 // Update one
 router.patch('/:id', updateGame)
 
-// Seed data
-// router.post('/seed', seedDatabaseWithGames)
-
 module.exports = router

@@ -1,14 +1,6 @@
 const mongoose = require('mongoose')
 
 const playerStatsSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    number: {
-        type: Number,
-        required: true,
-    },
     battingAverage: {
         type: Number,
         required: false,
@@ -34,6 +26,10 @@ const playerStatsSchema = new mongoose.Schema({
         required: false,
     },
     runsBattedIn: {
+        type: Number,
+        required: false,
+    },
+    hits: {
         type: Number,
         required: false,
     },

@@ -89,7 +89,7 @@ const checkForInvalidTeamFields = async (req, _res, next) => {
     const validSchemaFields = Object.keys(Teams.schema.obj)
     fieldsToUpdate.forEach(field => {
         if(!validSchemaFields.includes(field)) {
-            console.warn({ message: `Request body uses unsupported field: ${field}`}) // create obfuscated error codes instead of telling which field was invalid, else attackers can generate lists of field names and see which are valid or invalid!
+            console.warn({ message: `Request body uses unsupported field: ${field}`}) 
         }
     })
     next()

@@ -147,7 +147,6 @@ const seedDatabaseWithPlayers = async (req, res, next) => {
             },
         ])
         req.seedPlayers = playersResult
-        res.status(201).json(playersResult)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
