@@ -2,7 +2,7 @@ GET http://localhost:3000/playerStats
 
 ###
 
-GET http://localhost:3000/playerStats/63c8726893a231a5b8c52a55
+GET http://localhost:3000/playerStats/63c87d6084bb05dc4cc68d6f
 
 ###
 
@@ -10,7 +10,7 @@ POST http://localhost:3000/playerStats
 Content-Type: application/json
 
 {
-    "name": "Michael Jordan",
+    "name": "Ceelo Green",
     "number": 90,
     "atBats": 3,
     "battingAverage": 0.25,
@@ -24,8 +24,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/playerStats/63c86e4183927f2a4a7dffdc
-
+DELETE http://localhost:3000/playerStats/63c9005251bb2a59e535e512
 ###
 
 PATCH http://localhost:3000/playerStats/63c87d7184bb05dc4cc68d71
@@ -34,6 +33,6 @@ Content-Type: application/json
  {
     "runs": 3,
     "battingAverages": "Checking invalid fields generate warnings!",
-    "number": 44,
+    "number": 46,
     "gibberish!": "Checking invalid fields generate warnings!"
  }

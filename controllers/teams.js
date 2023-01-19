@@ -12,24 +12,24 @@ const Teams = require('../models/teams')
     next()
 }
 
-// export const seedDatabaseWithTeams = async (_req, res, next) => {
-//     try {
-//         const newTeamsResult = await Teams.insertMany([
-//             {
-//                 mascot: "Wildcats",
-//                 school: "Checotah High School"
-//             },
-//             {
-//                 mascot: "Tigers",
-//                 school: "Oktaha High School"
-//             }
-//         ])
-//         res.status(201).json(newTeamsResult)
-//     } catch (err) {
-//         res.status(400).json({ message: err.message })
-//     }
-//     next()
-// }
+const seedDatabaseWithTeams = async (_req, res, next) => {
+    try {
+        const newTeamsResult = await Teams.insertMany([
+            {
+                mascot: "Wildcats",
+                school: "Checotah High School"
+            },
+            {
+                mascot: "Tigers",
+                school: "Oktaha High School"
+            }
+        ])
+        res.status(201).json(newTeamsResult)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+    next()
+}
 
 const getAllTeams = async (_req, res) => {
     try {
@@ -94,5 +94,6 @@ module.exports = {
     deleteTeam,
     getAllTeams,
     getTeam,
+    seedDatabaseWithTeams,
     updateTeam,
 }
