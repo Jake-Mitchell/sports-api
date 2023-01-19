@@ -15,3 +15,12 @@ Content-Type: application/json
     "school": "Oktaha High School"
 }
 
+###
+
+PATCH http://localhost:3000/teams/63c905ecf16cce2949f024c9
+Content-Type: application/json
+
+{
+    "mascot": "Big Birds",
+    "school": "Checotah High School"
+}

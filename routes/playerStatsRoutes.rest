@@ -32,7 +32,7 @@ PATCH http://localhost:3000/playerStats/63c87d7184bb05dc4cc68d71
 Content-Type: application/json
 
  {
-    "runs": 4,
+    "runs": 3,
     "battingAverages": "Checking invalid fields generate warnings!",
     "number": 44,
     "gibberish!": "Checking invalid fields generate warnings!"

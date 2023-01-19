@@ -40,7 +40,7 @@ router.patch('/:id', getPlayerStats, checkForInvalidFields, async (req, res) => 
         const updatedPlayerStatsResult = await res.playerStats.save()
         res.json(updatedPlayerStatsResult)
     } catch (err) {
-        res.send(400).json({ message: err.message })
+        res.status(400).json({ message: err.message })
     }
 
 })
