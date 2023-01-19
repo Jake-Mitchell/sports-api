@@ -1,9 +1,7 @@
-# sports-api
-LigoSports REST API for storing and retrieving baseball data
 ### Sports REST API
-# calendar-ui
+This is a REST API as a project for LigoSports on storing and retrieving baseball data for high school teams.
 
-Welcome to my express API for managing and storing sports data. This is a project for LigoSports.
+Welcome to my express API for managing and storing sports data. This is a P.O.C.project for LigoSports.
 
 # Tech stack
 
