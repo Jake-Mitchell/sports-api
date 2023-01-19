@@ -10,21 +10,30 @@ POST http://localhost:3000/playerStats
 Content-Type: application/json
 
 {
-    "name": "David Beckham",
-    "number": 44,
-    "atBats": 6,
-    "battingAverage": 0.5,
+    "name": "Michael Jordan",
+    "number": 90,
+    "atBats": 3,
+    "battingAverage": 0.25,
     "runs": 4,
-    "plateAppearances": 9,
-    "runsBattedIn": 3,
-    "doubles": 2,           
-    "triples": 1,
-    "homeruns": 1
+    "plateAppearances": 1,
+    "runsBattedIn": 1,
+    "doubles": 0,           
+    "triples": 0,
+    "homeruns": 0
 }
 
 ###
 
 DELETE http://localhost:3000/playerStats/63c86e4183927f2a4a7dffdc
 
+###
 
+PATCH http://localhost:3000/playerStats/63c87d7184bb05dc4cc68d71
+Content-Type: application/json
 
+ {
+    "runs": 4,
+    "battingAverages": "Checking invalid fields generate warnings!",
+    "number": 44,
+    "gibberish!": "Checking invalid fields generate warnings!"
+ }

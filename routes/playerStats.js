@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 const PlayerStats = require('../models/playerStats')
 
-// Getting all
-router.get('/', async (req, res) =>  {
-    // res.send('Hello World')
+// Get all
+router.get('/', async (_req, res) =>  {
     try {
         const playerStats = await PlayerStats.find()
         res.json(playerStats)
@@ -13,46 +12,41 @@ router.get('/', async (req, res) =>  {
     }
 })
 
-// Getting one
-router.get('/:id', getPlayerStats, (req, res) =>  {
+// Get one
+router.get('/:id', getPlayerStats, (_req, res) =>  {
     res.send(res.playerStats)
 })
 
-// Creating one
-router.post('/', async (req, res) =>  {
-    const playerStats = new PlayerStats({
-        name: req.body.name,
-        number: req.body.number,
-        atBats: req.body.atBats,
-        battingAverage: req.body.battingAverage,
-        // playerId: req.body.playerId,
-        // gameId: req.body.gameId,
-        runs: req.body.runs,
-        plateAppearances: req.body.plateAppearances,
-        runsBattedIn: req.body.runsBattedIn,
-        doubles: req.body.doubles,
-        singles: req.body.singles,
-        triples: req.body.triples,
-        homeruns: req.body.homeruns,
-    })
+// Create one
+router.post('/', checkForInvalidFields, async (req, res) =>  {
+    const playerStats = new PlayerStats({...req.body})
 
     try {
         const newPlayerStatsResult = await playerStats.save()
         res.status(201).json(newPlayerStatsResult)
     } catch (err) {
         res.status(400).json({ message: err.message })
+    }
+})
 
+// Update one
+router.patch('/:id', getPlayerStats, checkForInvalidFields, async (req, res) =>  {
+    const fieldsToUpdate = Object.keys(req.body)
+    fieldsToUpdate.forEach(field => {
+        res.playerStats[field] = req.body[field]
+    })
+
+    try {
+        const updatedPlayerStatsResult = await res.playerStats.save()
+        res.json(updatedPlayerStatsResult)
+    } catch (err) {
+        res.send(400).json({ message: err.message })
     }
 
 })
 
-// Updating one
-router.patch('/:id', (req, res) =>  {
-
-})
-
-// Deleting one
-router.delete('/:id', getPlayerStats, async (req, res) =>  {
+// Delete one
+router.delete('/:id', getPlayerStats, async (_req, res) =>  {
     try {
         await res.playerStats.remove()
         res.json({ message: "Deleted player stats"})
@@ -72,6 +66,17 @@ async function getPlayerStats(req, res, next) {
         return res.status(500).json({ message: err.message })
     }
     res.playerStats = playerStats
+    next()
+}
+
+async function checkForInvalidFields(req, _res, next) {
+    const fieldsToUpdate = Object.keys(req.body)
+    const validSchemaFields = Object.keys(PlayerStats.schema.obj)
+    fieldsToUpdate.forEach(field => {
+        if(!validSchemaFields.includes(field)) {
+            console.warn({ message: `Request body uses unsupported field: ${field}`}) // create obfuscated error codes instead of telling which field was invalid, else attackers can generate lists of field names and see which are valid or invalid!
+        }
+    })
     next()
 }
 
