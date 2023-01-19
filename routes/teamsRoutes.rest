@@ -1,0 +1,17 @@
+
+GET http://localhost:3000/teams
+
+###
+
+GET http://localhost:3000/teams/63c905ecf16cce2949f024c9
+
+###
+
+POST http://localhost:3000/teams
+Content-Type: application/json
+
+{
+    "mascot": "Tigers",
+    "school": "Oktaha High School"
+}
+

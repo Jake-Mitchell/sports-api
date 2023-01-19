@@ -13,7 +13,10 @@ db.once('open', () => console.log("Connected to database"))
 app.use(express.json())
 
 const playerStatsRouter = require('./routes/playerStats')
+const teamsRouter = require('./routes/teams')
+
 app.use('/playerStats', playerStatsRouter)
+app.use('/teams', teamsRouter)
 
 
 
