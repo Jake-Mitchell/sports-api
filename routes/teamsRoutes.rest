@@ -11,8 +11,8 @@ POST http://localhost:3000/teams
 Content-Type: application/json
 
 {
-    "mascot": "Tigers",
-    "school": "Oktaha High School"
+    "mascot": "Wildcats",
+    "school": "Checotah High School"
 }
 
 ###
@@ -24,3 +24,7 @@ Content-Type: application/json
     "mascot": "Big Birds",
     "school": "Checotah High School"
 }
+
+###
+
+DELETE http://localhost:3000/teams/63c92301e421260cbe14bd13

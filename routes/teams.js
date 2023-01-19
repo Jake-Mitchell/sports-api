@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const Teams = require('../models/teams')
 const {
     checkForInvalidTeamFields,
     createTeam,
+    deleteTeam,
     getAllTeams,
     getTeam,
     updateTeam,
@@ -22,7 +22,7 @@ router.post('/', checkForInvalidTeamFields, createTeam)
 router.patch('/:id', checkForInvalidTeamFields, updateTeam)
 
 // Delete one
-// router.delete('/:id', deleteTeam)
+router.delete('/:id', deleteTeam)
 
 // Seed database
 // router.post('/', seedWithTeams)

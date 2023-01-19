@@ -60,14 +60,24 @@ const updateTeam = async (req, res) => {
             req.body,
             { new: true },
         )
-        console.log("UPDATED TEAM:", updatedTeamResult)
         res.json(updatedTeamResult)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
 }
 
-async function checkForInvalidTeamFields(req, _res, next) {
+const deleteTeam = async (req, res) => {
+    try {
+        await Teams.findByIdAndDelete(
+            req.params.id,
+        )
+        res.json({ message: "Deleted player stats"})
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
+const checkForInvalidTeamFields = async (req, _res, next) => {
     const fieldsToUpdate = Object.keys(req.body)
     const validSchemaFields = Object.keys(Teams.schema.obj)
     fieldsToUpdate.forEach(field => {
@@ -79,9 +89,10 @@ async function checkForInvalidTeamFields(req, _res, next) {
 }
 
 module.exports = {
+    checkForInvalidTeamFields,
     createTeam,
+    deleteTeam,
     getAllTeams,
     getTeam,
     updateTeam,
-    checkForInvalidTeamFields,
 }
