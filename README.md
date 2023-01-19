@@ -21,19 +21,19 @@ Welcome to my express API for managing and storing sports data. This is a P.O.C.
 
 # Running the app
 - The current version of node used for this project is listed in the .nvmrc file in the main directory
-- install all necessary node modules
-- add a .env file with the value shown in the .env.sample file. You can just copy everything in the .env.sample and past it in your .env
-- in the main directory, run "npm devstart" to start the local server at port 3000
-- install the "Rest Client" plugin for Visual Studio Code to easily interact with the API
-- seed the database by using the `POST http://localhost:3000/seed` command inside of `/routes/seedDataRoutes.rest` it will be interactive with a "send request" button after downloading the "Rest Client" plugin
-- read, create, update, or delete new data by using the files ending in `.rest` that are housed inside of the `/routes` folder
-- to query for a player and see their information and season statistics, navigate to `/routes/playersRoutes.rest and use the second GET request for a single player
+- Install all necessary node modules
+- Add a .env file with the value shown in the .env.sample file. You can just copy everything in the .env.sample and past it in your .env
+- In the main directory, run "npm devstart" to start the local server at port 3000
+- Install the "Rest Client" plugin for Visual Studio Code to easily interact with the API
+- Seed the database by using the `POST http://localhost:3000/seed` command inside of `/routes/seedDataRoutes.rest` it will be interactive with a "send request" button after downloading the "Rest Client" plugin
+- Read, create, update, or delete new data by using the files ending in `.rest` that are housed inside of the `/routes` folder
+- To query for a player and see their information and season statistics, navigate to `/routes/playersRoutes.rest and use the second GET request for a single player
 
 
 # notes
-- the seed data function sanitizes the database to maintain purity. So, if you run it again it will clear any data out that has been created.
-- as of now the generated data is not a realistic dataset, I went off of a template provided via [this document](https://docs.google.com/spreadsheets/d/1y5nzlebh7pAXxKLc7KKQZXCNCp9_O8YJ9BqRTbyZl9s/edit#gid=0). The generate data function can sometimes creates unrealistic numbers for the dataset. I didn't spend the time to refine this. However, the functionality is fully working. 
-- everything was manually tested but not with automated tests yet. I usually use Supertest for every API endpoint, and Jest for unit testing helper functions.
+- The seed data function sanitizes the database to maintain purity. So, if you run it again it will clear any data out that has been created.
+- As of now the generated data is not a realistic dataset, I went off of a template provided via [this document](https://docs.google.com/spreadsheets/d/1y5nzlebh7pAXxKLc7KKQZXCNCp9_O8YJ9BqRTbyZl9s/edit#gid=0). The generate data function can sometimes creates unrealistic numbers for the dataset. I didn't spend the time to refine this. However, the functionality is fully working. 
+- Everything was manually tested but not with automated tests yet. I usually use Supertest for every API endpoint, and Jest for unit testing helper functions.
 
 # Developing
 
