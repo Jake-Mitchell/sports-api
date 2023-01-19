@@ -7,12 +7,13 @@ const {
     getPlayers,
     updatePlayer,
 } = require('../controllers/players')
+const { getPlayerSeasonTotals } = require('../controllers/playerStats')
 
 // Create one
 router.post('/', createPlayer)
 
 // Get one
-router.get('/:id', getPlayer)
+router.get('/:id', getPlayer, getPlayerSeasonTotals)
 
 // Get many
 router.get('/', getPlayers)

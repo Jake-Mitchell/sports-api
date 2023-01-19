@@ -10,18 +10,19 @@ const createPlayer = async (req, res) => {
     }
 }
 
-const getPlayer = async (req, res) => {
+const getPlayer = async (req, res, next) => {
     let player
     try {
         player = await Players.findById(req.params.id)
         if (player == null) {
             return res.status(400).json({ message: "Cannot find player stats"})
         } 
+        req.player = player
     } catch(err) {
         return res.status(500).json({ message: err.message })
     }
     res.player = player
-    res.send(res.player)
+    next()
 }
 
 const getPlayers = async (_req, res) => {

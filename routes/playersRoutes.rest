@@ -15,7 +15,7 @@ GET http://localhost:3000/players
 
 ###
 
-GET http://localhost:3000/players/63c938d71ac81f0dfefdf918
+GET http://localhost:3000/players/63c96b93cefb2d45c6ac1b80
 
 ###
 

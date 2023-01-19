@@ -17,11 +17,11 @@ const getPlayerStats = async (req, res) => {
         if (playerStats == null) {
             return res.status(400).json({ message: "Cannot find player stats"})
         } 
+        res.playerStats = playerStats
+        res.send(res.playerStats)
     } catch(err) {
         return res.status(500).json({ message: err.message })
     }
-    res.playerStats = playerStats
-    res.send(res.playerStats)
 }
 
 const createPlayerStats = async (req, res) => {
@@ -105,12 +105,53 @@ const checkForInvalidFields = (req, _res, next) => {
     next()
 }
 
+const getPlayerSeasonTotals = async (req, res, next) => {
+    const playerId = req.player?.id
+    if(playerId) {
+      const allPlayerStats = await PlayerStats.find({ playerId })
+      const seasonTotals = {
+        battingAverage: 0,
+        atBats: 0,
+        runs: 0,
+        plateAppearances: 0,
+        runsBattedIn: 0,
+        hits: 0,
+        doubles: 0,
+        triples: 0,
+        homeruns: 0,
+      }
+
+        try {
+            allPlayerStats.forEach(stats => {
+                const { battingAverage = 0, runs = 0, plateAppearances = 0, runsBattedIn = 0, hits = 0, doubles = 0, triples = 0, homeruns = 0} = stats
+                seasonTotals.battingAverage += battingAverage
+                seasonTotals.runs += stats.runs
+                seasonTotals.plateAppearances += plateAppearances
+                seasonTotals.runsBattedIn += runsBattedIn
+                seasonTotals.hits += hits
+                seasonTotals.doubles += doubles
+                seasonTotals.triples += triples
+                seasonTotals.homeruns += homeruns
+            })
+            res.json({
+                ...req.player._doc,
+                ...seasonTotals,
+                battingAverage: seasonTotals.battingAverage / allPlayerStats.length
+
+            })
+        } catch (err) {
+            res.status(400).json({ message: err.message })
+        }
+    }
+}
+
 
 module.exports = {
     checkForInvalidFields,
     createPlayerStats,
     deletePlayerStats,
     getAllPlayerStats,
+    getPlayerSeasonTotals,
     getPlayerStats,
     seedDatabaseWithPlayerStats,
     updatePlayerStats,
