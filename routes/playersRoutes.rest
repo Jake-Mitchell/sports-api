@@ -1,0 +1,31 @@
+POST http://localhost:3000/players
+Content-Type: application/json
+
+{
+    "name": "Charles",
+    "class": "Junior",
+    "number": 9,
+    "teamId": "63c909dc49f2a4490d2c94c7",
+    "dateOfBirth": "07/30/97"
+}
+
+###
+
+GET http://localhost:3000/players
+
+###
+
+GET http://localhost:3000/players/63c938d71ac81f0dfefdf918
+
+###
+
+DELETE http://localhost:3000/players/63c9386b98e20efc02ef95f2
+
+###
+
+PATCH http://localhost:3000/players/63c938d01ac81f0dfefdf914
+Content-Type: application/json
+
+{
+    "name": "Tom Wilson"
+}

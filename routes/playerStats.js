@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const PlayerStats = require('../models/playerStats')
 const {
-    checkForInvalidFields
+    checkForInvalidFields,
     createPlayerStats,
     deletePlayerStats,
     getAllPlayerStats,

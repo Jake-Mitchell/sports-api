@@ -1,4 +1,3 @@
-// import { Teams } from "../models/teams";
 const Teams = require('../models/teams')
 
  const createTeam = async (req, res, next) => {
@@ -71,7 +70,7 @@ const deleteTeam = async (req, res) => {
         await Teams.findByIdAndDelete(
             req.params.id,
         )
-        res.json({ message: "Deleted player stats"})
+        res.json({ message: "Deleted team"})
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
