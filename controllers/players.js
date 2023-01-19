@@ -57,10 +57,108 @@ const updatePlayer = async (req, res) => {
     }
 }
 
+const seedDatabaseWithPlayers = async (req, res, next) => {
+   const [ team1, team2, team3, team4, ] = req.seedTeams
+   try {
+        const playersResult = await Players.insertMany([
+            {
+                name: "Rodney Dangerfield",
+                class: "Senior",
+                number: 3,
+                teamId: team1._id,
+                dateOfBirth: "09/05/04"
+            },
+            {
+                name: "Tom Mischa",
+                class: "Senior",
+                number: 24,
+                teamId: team2._id,
+                dateOfBirth: "09/05/04"
+            },
+            {
+                name: "Jose Zarate",
+                class: "Senior",
+                number: 16,
+                teamId: team3._id,
+                dateOfBirth: "09/05/04"
+            },
+            {
+                name: "Frank Williams",
+                class: "Junior",
+                number: 5,
+                teamId: team4._id,
+                dateOfBirth: "09/05/05"
+            },
+            {
+                name: "Akellom Rockfield",
+                class: "Junior",
+                number: 11,
+                teamId: team1._id,
+                dateOfBirth: "09/05/05"
+            },
+            {
+                name: "Samson Knight",
+                class: "Junior",
+                number: 8,
+                teamId: team2._id,
+                dateOfBirth: "09/05/05"
+            },
+            {
+                name: "Kaleb Mandler",
+                class: "Sophomore",
+                number: 17,
+                teamId: team3._id,
+                dateOfBirth: "09/05/06"
+            },
+            {
+                name: "Jariel Barnes",
+                class: "Sophomore",
+                number: 22,
+                teamId: team4._id,
+                dateOfBirth: "09/05/06"
+            },
+            {
+                name: "Damian Stout",
+                class: "Sophomore",
+                number: 10,
+                teamId: team1._id,
+                dateOfBirth: "09/05/06"
+            },
+            {
+                name: "James Briarson",
+                class: "Freshman",
+                number: 14,
+                teamId: team2._id,
+                dateOfBirth: "09/05/07"
+            },
+            {
+                name: "Danny Winkler",
+                class: "Freshman",
+                number: 4,
+                teamId: team3._id,
+                dateOfBirth: "09/05/07"
+            },
+            {
+                name: "Sam Russell",
+                class: "Freshman",
+                number: 19,
+                teamId: team4._id,
+                dateOfBirth: "09/05/07"
+            },
+        ])
+        req.seedPlayers = playersResult
+        res.status(201).json(playersResult)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+    next()
+}
+
 module.exports = {
     createPlayer,
     deletePlayer,
     getPlayer,
     getPlayers,
+    seedDatabaseWithPlayers,
     updatePlayer,
 }

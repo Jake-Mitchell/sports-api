@@ -1,0 +1,32 @@
+POST http://localhost:3000/games
+Content-Type: application/json
+
+{
+    "date": "09/14/22",
+    "winningTeamId":"63c9227b845258267e7988b4",
+    "winningScore": 90,
+    "losingScore": 85,
+    "homeTeamId": "63c9227b845258267e7988b4",
+    "awayTeamId": "63c909dc49f2a4490d2c94c7"
+}
+
+###
+
+GET http://localhost:3000/games
+
+###
+
+GET http://localhost:3000/games/63c9412f27c0c5f303991ddf
+
+###
+
+DELETE http://localhost:3000/games/63c9412f27c0c5f303991ddf
+
+###
+
+PATCH http://localhost:3000/games/63c9412f27c0c5f303991ddd
+Content-Type: application/json
+
+{
+    "date": "11/06/22"
+}

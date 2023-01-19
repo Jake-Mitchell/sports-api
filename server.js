@@ -15,10 +15,14 @@ app.use(express.json())
 const playersRouter = require('./routes/players')
 const playerStatsRouter = require('./routes/playerStats')
 const teamsRouter = require('./routes/teams')
+const gamesRouter = require('./routes/games')
+const seedDataRouter = require('./routes/seedData')
 
 app.use('/players', playersRouter)
 app.use('/playerStats', playerStatsRouter)
 app.use('/teams', teamsRouter)
+app.use('/games', gamesRouter)
+app.use('/seed', seedDataRouter)
 
 
 

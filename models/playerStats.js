@@ -15,11 +15,11 @@ const playerStatsSchema = new mongoose.Schema({
     },
     gameId: {
         type: mongoose.ObjectId, 
-        required: false, // false for now for testing. Create red tests to drive this.
+        required: true, 
     },
     playerId: {
         type: mongoose.ObjectId,
-        required: false, // false for now for testing. Create red tests to drive this.
+        required: true, 
     },
     atBats: {
         type: Number,

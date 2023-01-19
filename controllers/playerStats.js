@@ -37,51 +37,30 @@ const createPlayerStats = async (req, res) => {
 
 // create this after creating Teams and Players mongoDB collections and mongoose schemas
 const seedDatabaseWithPlayerStats = async (
-    _req,
+    req,
     res,
-    _next,
+    next,
 ) => {
-    //create teams
-    // const Teams = await Teams.insertMany([])
-    // get all generated _ids to map to players!
-    // make two teams!
-
-    // create players
-    // const Players = await Players.insertMany([
-    //   {
-    //     name: "Landon R.",
-    //     age: 17,
-    //     class: "Junior",
-    //     number: 44,
-    //     team: "teamId"
-    //   },
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    //   {},
-    // ])
-
-    // create games
-    // await Games.insertMany([])
-
-
-    // create player game stats
-    // await PlayerStats.insertMany([
-    //     {},
-    //     {},
-    //     {},
-    //     {},
-    //     {},
-    //     {},
-    //     {},
-    //     {},
-    // ])
+    console.log("teams", req.seedTeams)
+    console.log("players", req.seedPlayers)
+    console.log("games", req.seedGames)
+    try {
+        // create 120! player game stats, 10 per the 12 players!
+        // await PlayerStats.insertMany([
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        // ])
+    
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+    next()
 }
 
 const updatePlayerStats = async (req, res) => {

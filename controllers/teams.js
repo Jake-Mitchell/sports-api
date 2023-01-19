@@ -11,19 +11,27 @@ const Teams = require('../models/teams')
     next()
 }
 
-const seedDatabaseWithTeams = async (_req, res, next) => {
+const seedDatabaseWithTeams = async (req, res, next) => {
     try {
-        const newTeamsResult = await Teams.insertMany([
+        const teamsResult = await Teams.insertMany([
             {
                 mascot: "Wildcats",
-                school: "Checotah High School"
+                school: "Checotah High School",
             },
             {
                 mascot: "Tigers",
-                school: "Oktaha High School"
-            }
+                school: "Oktaha High School",
+            },
+            {
+                mascot: "Ironheads",
+                school: "Eufala High School",
+            },
+            {
+                mascot: "Conquerors",
+                school: "Victory Christian High School",
+            },
         ])
-        res.status(201).json(newTeamsResult)
+        req.seedTeams = teamsResult
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
