@@ -31,13 +31,12 @@ router.post('/', checkForInvalidFields, async (req, res) =>  {
 
 // Update one
 router.patch('/:id', getPlayerStats, checkForInvalidFields, async (req, res) =>  {
-    const fieldsToUpdate = Object.keys(req.body)
-    fieldsToUpdate.forEach(field => {
-        res.playerStats[field] = req.body[field]
-    })
-
     try {
-        const updatedPlayerStatsResult = await res.playerStats.save()
+        const updatedPlayerStatsResult = await PlayerStats.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true },
+        )
         res.json(updatedPlayerStatsResult)
     } catch (err) {
         res.status(400).json({ message: err.message })
