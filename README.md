@@ -22,7 +22,7 @@ Welcome to my REST API for managing and storing sports data primarily focused on
 # Running the app
 - The current version of node used for this project is listed in the .nvmrc file in the main directory
 - Install all necessary node modules
-- Add a .env file with the value shown in the .env.sample file. You can just copy everything in the .env.sample and past it in your .env
+- Add a .env file inside of the root directory. The values needed in your .env file are shown in the .env.sample file. You can just copy everything in the .env.sample and past it in your .env
 - In the main directory, run "npm devstart" to start the local server at port 3000
 - Install the "Rest Client" plugin for Visual Studio Code to easily interact with the API
 - Seed the database by using the `POST http://localhost:3000/seed` command inside of `/routes/seedDataRoutes.rest` it will be interactive with a "send request" button after downloading the "Rest Client" plugin
