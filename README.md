@@ -1,7 +1,6 @@
 ### Sports REST API
-This is a REST API as a project for LigoSports on storing and retrieving baseball data for high school teams.
 
-Welcome to my express API for managing and storing sports data. This is a P.O.C.project for LigoSports.
+Welcome to my REST API for managing and storing sports data primarily focused on retrieving baseball data for high school teams. This is a P.O.C. project for LigoSports.
 
 # Tech stack
 
