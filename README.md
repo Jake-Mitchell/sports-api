@@ -4,6 +4,7 @@ Welcome to my REST API for managing and storing sports data primarily focused on
 
 # Tech stack
 
+- Javascript
 - Node.js
 - Express
 - Mongoose
