@@ -16,6 +16,7 @@ Welcome to my REST API for managing and storing sports data primarily focused on
 - Ability to query for the season totals statistics of each player
 
 # Entity Relationship Model
+> The first Id fields in a table are primary keys, any following Ids are foreign keys.
 <img width="598" alt="Screenshot 2023-01-19 at 10 13 50 AM" src="https://user-images.githubusercontent.com/39348241/213526701-27aac9c7-30e6-466a-b7cb-67ef9eab65cd.png">
 
 # Running the app
